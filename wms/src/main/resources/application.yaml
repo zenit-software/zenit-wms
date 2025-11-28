@@ -1,3 +1,31 @@
 spring:
   application:
     name: zenit-wms
+
+  datasource:
+    url: jdbc:h2:mem:zenitwms          # In-Memory-Datenbank (kein Setup nötig)
+    driver-class-name: org.h2.Driver
+    path: /h2-console
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: false                    # öffnet http://localhost:8080/h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update                  # erstellt Tabellen automatisch
+    show-sql: true                     # zeigt SQL in der Konsole (super zum Lernen)
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: always                     # führt später unsere init-Skripte aus
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
